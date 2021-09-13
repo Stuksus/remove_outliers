@@ -4,7 +4,7 @@
 # In[1]:
 
 
-def removing_outliers(column,frame, count = 0,total_outliers = 0, alpha = 1.5):
+def removing_outliers(column,frame, count = 0,total_outliers = 0, alpha = 1.5,max_iter = 5):
         """
         Метод удаления выбросов с помощью межквартильного размаха
 
@@ -14,6 +14,7 @@ def removing_outliers(column,frame, count = 0,total_outliers = 0, alpha = 1.5):
         - count: Количество рекурсивных циклов проверки 
         - total_outliers: Общая сумма выбросов, найденных за все циклы проверки
         - alpha: Коэфициент при вычислении интервала
+        - max_iter: максимальное количество циклов функции
 
         Возвращет:
         - frame: Обработанный фрейм
@@ -41,7 +42,7 @@ def removing_outliers(column,frame, count = 0,total_outliers = 0, alpha = 1.5):
         # Удалим не нужную таблицу
         del prep_frame
         # Проверим условия выхода
-        if leng > 0 and count <= 5:
+        if leng > 0 and count < max_iter:
             frame,leng,total_outliers = removing_outliers(column,frame, count,total_outliers+leng)
         else:
             print('Количество строк, выбранных для удаления {}: {}. Количество итераций {}'.format(column,total_outliers,count),end = "\n\n")
