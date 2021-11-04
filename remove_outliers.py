@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 def removing_outliers(column,frame, count = 0,total_outliers = 0, alpha = 1.5,max_iter = 5):
         """
         Метод удаления выбросов с помощью межквартильного размаха
