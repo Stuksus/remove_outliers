@@ -41,7 +41,7 @@ def removing_outliers(column,frame, count = 0,total_outliers = 0, alpha = 1.5,ma
         del prep_frame
         # Проверим условия выхода
         if leng > 0 and count < max_iter:
-            frame,leng,total_outliers = removing_outliers(column,frame, count,total_outliers + leng)
+            frame,leng,total_outliers = removing_outliers(column,frame, count,total_outliers + leng,alpha=alpha,max_iter=max_iter-count)
         else:
             print('Количество строк, выбранных для удаления {}: {}. Количество итераций {}'.format(column,total_outliers,count),end = "\n\n")
         return frame,leng,total_outliers
